@@ -15,4 +15,11 @@ public class ShadowsTest
 		assertEquals("[0,2.31]", shadows.project(60));
 		assertEquals("[0,0.00]", shadows.project(90));
 	}
+
+	@Test
+	public void twoBuildingsProjectTwoShadows()
+	{
+		final Shadows shadows = new Shadows(4f, 0f, 2f, 8f);
+		assertEquals("[0,6.93][8,11.46]", shadows.project(30));
+	}
 }

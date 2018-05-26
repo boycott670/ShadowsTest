@@ -12,7 +12,7 @@ final class ShadowCast extends Segment
 
 	String cast()
 	{
-		return String.format(Locale.US, "[%.0f,%.2f]", position, height);
+		return String.format(Locale.US, "[%.0f,%.2f]", position, position + height);
 	}
 
 }
