@@ -22,4 +22,11 @@ public class ShadowsTest
 		final Shadows shadows = new Shadows(4f, 0f, 2f, 8f);
 		assertEquals("[0,6.93][8,11.46]", shadows.project(30));
 	}
+
+	@Test
+	public void closeBuildingsMergeTheirShadow()
+	{
+		final Shadows shadows = new Shadows(4f, 0f, 2f, 6f);
+		assertEquals("[0,9.46]", shadows.project(30));
+	}
 }
