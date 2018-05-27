@@ -10,4 +10,9 @@ abstract class Segment
 		this.position = position;
 		this.height = height;
 	}
+	
+	final double extent()
+	{
+		return position + height;
+	}
 }

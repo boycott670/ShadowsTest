@@ -4,6 +4,8 @@ import java.util.function.IntToDoubleFunction;
 
 final class Building extends Segment
 {
+	
+	private static final IntToDoubleFunction DEGREES_TO_RADIANS = degrees -> degrees * Math.PI/180;
 
 	Building(float position, float height)
 	{
@@ -12,9 +14,7 @@ final class Building extends Segment
 
 	ShadowCast project(final int sunHeightInDegrees)
 	{
-		final IntToDoubleFunction degreesToRadians = degrees -> degrees * Math.PI/180;
-		
-		return new ShadowCast(position, height * Math.tan(degreesToRadians.applyAsDouble(90 - sunHeightInDegrees)));
+		return new ShadowCast(position, height * Math.tan(DEGREES_TO_RADIANS.applyAsDouble(90 - sunHeightInDegrees)));
 	}
 
 }
