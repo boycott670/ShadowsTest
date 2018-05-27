@@ -34,17 +34,17 @@ final class DefaultShadowCastsMerger implements ShadowCastsMerger
 			}
 			else if (!afterFirstShadowCast.isSupersededBy(firstShadowCast))
 			{
-				shadowCasts.addLast(afterFirstShadowCast);
+				shadowCasts.addFirst(afterFirstShadowCast);
 				
 				mergedShadowCasts.add(firstShadowCast);
 			}
 			else
 			{
-				shadowCasts.addLast(afterFirstShadowCast.mergeWithSuperseding(firstShadowCast));
+				shadowCasts.addFirst(afterFirstShadowCast.mergeWithSuperseding(firstShadowCast));
 			}
 		}
 		
-		return mergedShadowCasts.toArray(new ShadowCast[mergedShadowCasts.size()]);
+		return mergedShadowCasts.toArray(new ShadowCast[0]);
 	}
 
 }
