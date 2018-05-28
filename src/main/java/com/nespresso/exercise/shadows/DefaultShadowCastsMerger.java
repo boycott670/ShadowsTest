@@ -4,7 +4,9 @@ import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.Comparator;
 import java.util.Deque;
+import java.util.stream.Collectors;
 
 final class DefaultShadowCastsMerger implements ShadowCastsMerger
 {
@@ -14,7 +16,9 @@ final class DefaultShadowCastsMerger implements ShadowCastsMerger
 	@Override
 	public void setShadowCasts(ShadowCast[] shadowCasts)
 	{
-		this.shadowCasts = new ArrayDeque<>(Arrays.asList(shadowCasts));
+		this.shadowCasts = Arrays.stream(shadowCasts)
+				.sorted(Comparator.comparingDouble((Segment segment) -> segment.position))
+				.collect(Collectors.toCollection(ArrayDeque::new));
 	}
 
 	@Override
